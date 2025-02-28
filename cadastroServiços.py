@@ -102,7 +102,8 @@ def editarServico(clientes, posicao):
         else:
             print("Cliente inexistente.")
             posicao = input("Tente novamente: ")
-            
+
+maximoCadastros = 5
 cadastroServicos = []
 salvarJSON(json.dumps(cadastroServicos, indent=4))
 cadastroServicos = lerJSON()
@@ -137,14 +138,17 @@ while True:
                         print('Opção não encontrada. Tente novamente:')
             case 2:
                 print("\nVocê escolheu adicionar.")
-                varCliente = verificarVazio(input("Cliente: "))
-                varContato = verificarVazio(input("Contato: "))
-                varServiço = verificarVazio(input("Serviço: "))
-                varData = verificarData(input("Data de Entrega (dd/mm/aaaa): "))
+                if len(cadastroServicos) < maximoCadastros:
+                    varCliente = verificarVazio(input("Cliente: "))
+                    varContato = verificarVazio(input("Contato: "))
+                    varServiço = verificarVazio(input("Serviço: "))
+                    varData = verificarData(input("Data de Entrega (dd/mm/aaaa): "))
             
-                adcServico(varCliente, varContato, varServiço, varData.strftime('%d/%m/%Y'))
-                print("ADICIONADO com sucesso!")
-                input()
+                    adcServico(varCliente, varContato, varServiço, varData.strftime('%d/%m/%Y'))
+                    print("ADICIONADO com sucesso!")
+                    input()
+                else:
+                    print("Limite máximo de clientes atingido, termine seus serviços!")
 
             case 3:
                 print("\nVocê escolheu remover.")
