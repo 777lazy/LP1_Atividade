@@ -103,10 +103,13 @@ def editarServico(clientes, posicao):
             print("Cliente inexistente.")
             posicao = input("Tente novamente: ")
 
+#Fim das funções
+
 maximoCadastros = 5
 cadastroServicos = []
 salvarJSON(json.dumps(cadastroServicos, indent=4))
 cadastroServicos = lerJSON()
+
 print("\nSeja bem-vindo(a) ao programa SeuSERVIÇO")
 while True:
     
