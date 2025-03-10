@@ -2,9 +2,9 @@ from datetime import datetime
 import json
 
 def lerJSON():
-    with open("cadastroServicos.json", "r") as meuArquivo:
-        cadastroServicos = json.load(meuArquivo)
-        return cadastroServicos
+        with open("cadastroServicos.json", "r") as meuArquivo:
+            cadastroServicos = json.load(meuArquivo)
+            return cadastroServicos
     
 def salvarJSON(lista):
     with open("cadastroServicos.json", "w") as meuArquivo:
@@ -106,9 +106,10 @@ def editarServico(clientes, posicao):
 #Fim das funções
 
 maximoCadastros = 5
-cadastroServicos = []
-salvarJSON(json.dumps(cadastroServicos, indent=4))
-cadastroServicos = lerJSON()
+try:
+    cadastroServicos = lerJSON()
+except FileNotFoundError:
+    cadastroServicos = []
 
 print("\nSeja bem-vindo(a) ao programa SeuSERVIÇO")
 while True:
